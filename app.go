@@ -77,6 +77,13 @@ func calculateIncomeLessMedicalLevy(taxedSalary float64, annulSalary float64) fl
 	return taxedSalary - (annulSalary * medicalLevyPercentage)
 }
 
+/*
+* Function to calculate monthly net earnings
+ */
+func calculateMonthlyNetEarnings(taxedSalary float64) float64 {
+	return taxedSalary / 12.0
+}
+
 func main() {
 	// Get command line arguments
 	args := os.Args
@@ -99,5 +106,10 @@ func main() {
 	fmt.Println("The annual taxed income is: $" + fmt.Sprintf("%f", annualTaxedIncome))
 
 	// Calculate income less medical levy
-	fmt.Println("The annual taxed income less medical levy(2%) is: $" + fmt.Sprintf("%f", calculateIncomeLessMedicalLevy(annualTaxedIncome, annualSalary)))
+	incomeLessMedicalLevy := calculateIncomeLessMedicalLevy(annualTaxedIncome, annualSalary)
+	fmt.Println("The annual taxed income less medical levy(2%) is: $" + fmt.Sprintf("%f", incomeLessMedicalLevy))
+
+	// Calculate monthly net earnings
+	monthlyNetEarnings := calculateMonthlyNetEarnings(incomeLessMedicalLevy)
+	fmt.Println("The monthly net earnings is: $" + fmt.Sprintf("%f", monthlyNetEarnings))
 }
