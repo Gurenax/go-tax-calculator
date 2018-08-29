@@ -84,6 +84,13 @@ func calculateMonthlyNetEarnings(taxedSalary float64) float64 {
 	return taxedSalary / 12.0
 }
 
+/*
+*	Convert float to string
+ */
+func floatToString(value float64) string {
+	return fmt.Sprintf("%f", value)
+}
+
 func main() {
 	// Get command line arguments
 	args := os.Args
@@ -92,24 +99,24 @@ func main() {
 	annualSalary := convertStringToFloat64(args[1])
 
 	// Output annual salary
-	fmt.Println("The annual salary is: $" + fmt.Sprintf("%f", annualSalary))
+	fmt.Println("The annual salary is: $" + floatToString(annualSalary))
 
 	// Output tax bracket
 	fmt.Println("The tax bracket is: " + determineTaxBracke(annualSalary))
 
 	// Calculate the annual tax
 	annualTax := calculateAnnualTax(annualSalary)
-	fmt.Println("The annual tax is: $" + fmt.Sprintf("%f", annualTax))
+	fmt.Println("The annual tax is: $" + floatToString(annualTax))
 
 	// Calculate the annual taxed income
 	annualTaxedIncome := calculateAnnualTaxedIncome(annualSalary, annualTax)
-	fmt.Println("The annual taxed income is: $" + fmt.Sprintf("%f", annualTaxedIncome))
+	fmt.Println("The annual taxed income is: $" + floatToString(annualTaxedIncome))
 
 	// Calculate income less medical levy
 	incomeLessMedicalLevy := calculateIncomeLessMedicalLevy(annualTaxedIncome, annualSalary)
-	fmt.Println("The annual taxed income less medical levy(2%) is: $" + fmt.Sprintf("%f", incomeLessMedicalLevy))
+	fmt.Println("The annual taxed income less medical levy(2%) is: $" + floatToString(incomeLessMedicalLevy))
 
 	// Calculate monthly net earnings
 	monthlyNetEarnings := calculateMonthlyNetEarnings(incomeLessMedicalLevy)
-	fmt.Println("The monthly net earnings is: $" + fmt.Sprintf("%f", monthlyNetEarnings))
+	fmt.Println("The monthly net earnings is: $" + floatToString(monthlyNetEarnings))
 }
