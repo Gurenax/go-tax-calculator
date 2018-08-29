@@ -7,7 +7,7 @@ import (
 )
 
 /*
-*	Function to convert string to float64
+* Function to convert string to float64
  */
 func convertStringToFloat64(str string) float64 {
 	if result, err := strconv.ParseFloat(str, 64); err == nil {
@@ -43,7 +43,7 @@ func computeSalary(salary float64, num1 float64, num2 float64, num3 float64) flo
 }
 
 /*
-*	Function to calculate the annual tax
+* Function to calculate the annual tax
  */
 func calculateAnnualTax(salary float64) float64 {
 	switch determineTaxBracke(salary) {
@@ -85,12 +85,15 @@ func calculateMonthlyNetEarnings(taxedSalary float64) float64 {
 }
 
 /*
-*	Convert float to string
+* Convert float to string
  */
 func floatToString(value float64) string {
 	return fmt.Sprintf("%f", value)
 }
 
+/*
+* Execute App
+ */
 func main() {
 	// Get command line arguments
 	args := os.Args
