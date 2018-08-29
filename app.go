@@ -62,6 +62,21 @@ func calculateAnnualTax(salary float64) float64 {
 	}
 }
 
+/*
+* Function to calculate annual taxed income
+ */
+func calculateAnnualTaxedIncome(annualSalary float64, annualTax float64) float64 {
+	return annualSalary - annualTax
+}
+
+/*
+* Function to calculate income less medical levy
+ */
+func calculateIncomeLessMedicalLevy(taxedSalary float64, annulSalary float64) float64 {
+	medicalLevyPercentage := 0.02
+	return taxedSalary - (annulSalary * medicalLevyPercentage)
+}
+
 func main() {
 	// Get command line arguments
 	args := os.Args
@@ -76,5 +91,13 @@ func main() {
 	fmt.Println("The tax bracket is: " + determineTaxBracke(annualSalary))
 
 	// Calculate the annual tax
-	fmt.Println("The annual tax is: $" + fmt.Sprintf("%f", calculateAnnualTax(annualSalary)))
+	annualTax := calculateAnnualTax(annualSalary)
+	fmt.Println("The annual tax is: $" + fmt.Sprintf("%f", annualTax))
+
+	// Calculate the annual taxed income
+	annualTaxedIncome := calculateAnnualTaxedIncome(annualSalary, annualTax)
+	fmt.Println("The annual taxed income is: $" + fmt.Sprintf("%f", annualTaxedIncome))
+
+	// Calculate income less medical levy
+	fmt.Println("The annual taxed income less medical levy(2%) is: $" + fmt.Sprintf("%f", calculateIncomeLessMedicalLevy(annualTaxedIncome, annualSalary)))
 }
