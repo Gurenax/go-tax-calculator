@@ -19,8 +19,10 @@ func convertStringToFloat64(str string) float64 {
 /*
 * Function to determine the tax bracket
  */
-func determineTaxBracke(salary float64) string {
-	if salary <= 18200.0 {
+func determineTaxBracket(salary float64) string {
+	if salary <= 0.0 {
+		return "None"
+	} else if salary <= 18200.0 {
 		return "Tax Bracket 1"
 	} else if salary > 18200.0 && salary <= 37000.0 {
 		return "Tax Bracket 2"
@@ -46,7 +48,7 @@ func computeSalary(salary float64, num1 float64, num2 float64, num3 float64) flo
 * Function to calculate the annual tax
  */
 func calculateAnnualTax(salary float64) float64 {
-	switch determineTaxBracke(salary) {
+	switch determineTaxBracket(salary) {
 	case "Tax Bracket 1":
 		return 0.0
 	case "Tax Bracket 2":
@@ -105,7 +107,7 @@ func main() {
 	fmt.Println("The annual salary is: $" + floatToString(annualSalary))
 
 	// Output tax bracket
-	fmt.Println("The tax bracket is: " + determineTaxBracke(annualSalary))
+	fmt.Println("The tax bracket is: " + determineTaxBracket(annualSalary))
 
 	// Calculate the annual tax
 	annualTax := calculateAnnualTax(annualSalary)
