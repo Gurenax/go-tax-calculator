@@ -38,9 +38,9 @@ func determineTaxBracket(salary float64) string {
 }
 
 /*
-* Function to compute salary
+* Function to compute tax
  */
-func computeSalary(salary float64, num1 float64, num2 float64, num3 float64) float64 {
+func computeTax(salary float64, num1 float64, num2 float64, num3 float64) float64 {
 	return (salary-num1)*num2 + num3
 }
 
@@ -52,13 +52,13 @@ func calculateAnnualTax(salary float64) float64 {
 	case "Tax Bracket 1":
 		return 0.0
 	case "Tax Bracket 2":
-		return computeSalary(salary, 18200.0, 0.19, 0.0)
+		return computeTax(salary, 18200.0, 0.19, 0.0)
 	case "Tax Bracket 3":
-		return computeSalary(salary, 37000.0, 0.325, 3572.0)
+		return computeTax(salary, 37000.0, 0.325, 3572.0)
 	case "Tax Bracket 4":
-		return computeSalary(salary, 90000.0, 0.37, 20797.0)
+		return computeTax(salary, 90000.0, 0.37, 20797.0)
 	case "Tax Bracket 5":
-		return computeSalary(salary, 180000.0, 0.45, 54097.0)
+		return computeTax(salary, 180000.0, 0.45, 54097.0)
 	default:
 		return 0.0
 	}
