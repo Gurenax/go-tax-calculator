@@ -107,3 +107,28 @@ func Test_determineTaxBracket(t *testing.T) {
 		})
 	}
 }
+
+func Test_computeTax(t *testing.T) {
+	type args struct {
+		salary float64
+		num1   float64
+		num2   float64
+		num3   float64
+	}
+	tests := []struct {
+		name string
+		args args
+		want float64
+	}{
+		{"Compute taxced salary for $18201", args{18201.0, 18200.0, 0.19, 0.0}, 0.19},
+		{"Compute taxced salary for $20000", args{20000.0, 18200.0, 0.19, 0.0}, 342.00},
+		{"Compute taxced salary for $50000", args{50000.0, 37000.0, 0.325, 3572.0}, 7797.00},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := computeTax(tt.args.salary, tt.args.num1, tt.args.num2, tt.args.num3); got != tt.want {
+				t.Errorf("computeTax() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
