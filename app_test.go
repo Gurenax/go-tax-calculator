@@ -132,3 +132,28 @@ func Test_computeTax(t *testing.T) {
 		})
 	}
 }
+
+func Test_calculateAnnualTax(t *testing.T) {
+	type args struct {
+		salary float64
+	}
+	tests := []struct {
+		name string
+		args args
+		want float64
+	}{
+		{"Annual tax for $10000", args{10000}, 0},
+		{"Annual tax for $20000", args{20000}, 342},
+		{"Annual tax for $30000", args{30000}, 2242},
+		{"Annual tax for $40000", args{40000}, 4547},
+		{"Annual tax for $50000", args{50000}, 7797},
+		{"Annual tax for $50000", args{100000}, 24497},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := calculateAnnualTax(tt.args.salary); got != tt.want {
+				t.Errorf("calculateAnnualTax() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
