@@ -143,11 +143,11 @@ func Test_calculateAnnualTax(t *testing.T) {
 		want float64
 	}{
 		{"Annual tax for $10000", args{10000}, 0},
-		{"Annual tax for $20000", args{20000}, 342},
-		{"Annual tax for $30000", args{30000}, 2242},
-		{"Annual tax for $40000", args{40000}, 4547},
-		{"Annual tax for $50000", args{50000}, 7797},
-		{"Annual tax for $50000", args{100000}, 24497},
+		{"Annual tax for $20000", args{20000}, 341.81},
+		{"Annual tax for $30000", args{30000}, 2241.81},
+		{"Annual tax for $40000", args{40000}, 3466.6749999999997},
+		{"Annual tax for $50000", args{50000}, 6716.675},
+		{"Annual tax for $50000", args{100000}, 22066.63},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
